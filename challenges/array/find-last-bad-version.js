@@ -20,21 +20,16 @@ var solution = function(isBadVersion) {
      * @return {integer} The first bad version
      */
     return function(n) {
-        if(isBadVersion(1) === true) return 1
-        if(isBadVersion((n-1)) === false) return n
         let low = 1
         let high = n
-        let mid = Math.floor((n+1)/2)
-        while(true){
-            if(isBadVersion(mid) === true){
-                if(isBadVersion(mid-1) === false)return mid
-                high = mid-1
-                mid = Math.floor((high+low)/2)
+        while(low < high){
+            let mid = Math.floor((high+low) / 2)
+            if(isBadVersion(mid)){
+                high = mid
             } else{
-                if(isBadVersion(mid+1) === true) return (mid+1)
-                low = mid+1
-                mid = Math.round((high+low)/2)
+                low = mid + 1
             }
         }
+        return low
     };
 };
