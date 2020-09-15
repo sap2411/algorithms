@@ -15,4 +15,4 @@ function isSubsequence(str1, str2) {
       if (i === str1.length) return true;
       j++;
     }
-    
+}
