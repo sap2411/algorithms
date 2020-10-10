@@ -357,16 +357,16 @@ function findMyMaxProfit(arr, n){
     table[0] = arr[0][2]
     table[n] = arr[0][2]
     for(let ind = 1; ind < arr.length; ind++){
-        let value = arr[ind][2]
-        let prevJob = findPreviousJob(arr, n, ind, table)
-        value += prevJob
-        table[ind] = value
-        if(value > table[n]) table[n] = value
+        let profit = arr[ind][2]
+        let prevTotalJobProfit = findPreviousJob(arr, ind, table)
+        profit += prevTotalJobProfit
+        table[ind] = profit
+        if(profit > table[n]) table[n] = profit
     }
     return table[n]
 }
 
-function findPreviousJob(arr,n,ind, table){
+function findPreviousJob(arr, ind, table){
     for(j = ind-1;j>=0;j--){
         if(arr[j][1] <= arr[ind][0]) return table[j]
     }
